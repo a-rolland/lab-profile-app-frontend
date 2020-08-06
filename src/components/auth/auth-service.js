@@ -1,36 +1,3 @@
-// import axios from 'axios';
-
-// const AuthService = () => {
-//     let initiateService = axios.create({
-//         baseURL: 'http://localhost:5000/auth',
-//         withCredentials: true
-//     });
-//     let service = initiateService;
-
-//     const signup = (username, password) => {
-//         return service.post('/signup', { username, password })
-//             .then(response => response.data)
-//     }
-
-//     const loggedin = () => {
-//         return service.get('/loggedin')
-//             .then(response => response.data)
-//     }
-
-//     const login = (username, password) => {
-//         return service.post('/login', { username, password })
-//             .then(response => response.data)
-//     }
-
-//     const logout = () => {
-//         return service.post('/logout', {})
-//             .then(response => response.data)
-//     }
-// }
-
-// export default AuthService;
-
-
 import axios from 'axios';
  
 const service = axios.create({
@@ -45,24 +12,34 @@ const errorHandler = err => {
 export default {
     service,
 
-    signup(username, password) {
-    return service.post('/signup', { username, password })
+    signup: (username, password, campus, course) => {
+    return service.post('/signup', { username, password, campus, course })
         .then(response => response.data)
         .catch(errorHandler)
     },
 
-    loggedin(){
+    loggedin: () => {
     return service.get('/loggedin')
         .then(response => response.data)
     },
 
-    login(username, password) {
+    login: (username, password) => {
         return service.post('/login', { username, password })
             .then(response => response.data)
     },
 
-    logout() {
+    logout: () => {
         return service.post('/logout', {})
             .then(response => response.data)
-    }   
+    },
+
+    upload: () => {
+        return service.post('/upload', file)
+            .then(response => response.data)
+    },
+
+    edit: () => {
+        return service.post('/edit', data)
+            .then(response => response.data)
+    } 
 }

@@ -24,6 +24,7 @@ const Login = props => {
                     password: "" 
                 });
                 props.callback(response)
+                props.history.push("/profile")
             })
             .catch(error => console.log(error))
     }
@@ -38,14 +39,26 @@ const Login = props => {
 
     return (
         <div>
-            <form onSubmit={handleFormSubmit}>
-                <label>Username:</label>
-                <input type="text" name="username" value={state.username} onChange={handleChange} />
+            <form className="form-group m-2" onSubmit={handleFormSubmit} style={{maxWidth:"350px"}}>
+            <label>Username:</label>
+                <input className="form-control" 
+                    type="text" 
+                    name="username" 
+                    value={state.username} 
+                    placeholder="Enter your name"
+                    onChange={handleChange} />
+
                 <label>Password:</label>
-                <input name="password" value={state.password} onChange={handleChange} />
+                <input type="password" 
+                    className="form-control" 
+                    name="password" 
+                    placeholder="********"
+                    value={state.password} 
+                    onChange={handleChange} />
 
                 <input type="submit" value="Login" />
             </form>
+
             <p>
                 Don't have account?
                 <Link to={"/signup"}> Signup</Link>
