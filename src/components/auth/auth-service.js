@@ -33,8 +33,8 @@ export default {
             .then(response => response.data)
     },
 
-    upload: () => {
-        return service.post('/upload', file)
+    upload: data => {
+        return service.post('/upload', data)
             .then(response => response.data)
     },
 

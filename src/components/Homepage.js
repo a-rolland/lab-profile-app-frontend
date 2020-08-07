@@ -1,11 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-const Homepage = () => {
+const Homepage = props => {
     return (
         <div>
-            <Link to="/login" className="nav-link">Login</Link>
-            <Link to="/signup" className="nav-link">Signup</Link>
+            { props.loggedInUser ? <Redirect to={'/profile'} /> :
+                <>
+                    <Link to="/login" className="nav-link">Login</Link>
+                    <Link to="/signup" className="nav-link">Signup</Link>
+                </>
+            }
+            
         </div>
     )
 }
